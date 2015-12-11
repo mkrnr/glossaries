@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{bm}
+\usepackage{amssymb,amsmath}
+
+ %\usepackage{glossaries} % acronym will go in main glossary
+\usepackage[nonumberlist,acronym]{glossaries} % make a separate list of acronyms
+
+\loadglsentries{glossary}
+
+\makeglossaries
+
+\begin{document}
+\glsaddall
+
+\printglossary[style=altlist]
+\printglossary[type=\acronymtype]
+\end{document}

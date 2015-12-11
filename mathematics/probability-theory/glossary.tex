@@ -1,0 +1,91 @@
+\longnewglossaryentry{event}{name=event}
+{%
+  Based on a \gls{event space} of possible outcomes \glssymbol{event space} and a set of measurable events \glssymbol{measurable set} to which we want to assign probabilities, an event $a \in \glssymbol{measurable set}$ is a subset of \glssymbol{event space}.\\
+}
+
+\longnewglossaryentry{event space}{name=event space,symbol={\ensuremath{\Omega}}}
+{%
+  A set of possible outcomes $\Omega$ with the following properties:
+  \begin{itemize}
+    \item It contains the empty event $\emptyset$, and the trivial event $\Omega$.
+    \item It is closed under union: If $\alpha, \beta \in S$, then so is $\alpha \cup \beta$.
+    \item It is closed under complementation: If $\alpha \in S$, then so is $\Omega - \alpha$.
+  \end{itemize}
+}
+
+\longnewglossaryentry{measurable set}{name=measurable set,symbol=\ensuremath{S}}
+{%
+  A set $S$ is measurable if it possible to assign a number to each suitable subset of $S$.
+}
+
+\longnewglossaryentry{probability distribution}{name=probability distribution}
+{%
+  A probability distribution $P$ over $(\glssymbol{event space},\glssymbol{measurable set})$ is a mapping from events in \glssymbol{measurable set} to real values that satisfies the following conditions:
+  \begin{itemize}
+    \item $P(\alpha)\geq 0 $ for all $ \alpha \in S$.
+    \item $P(\glssymbol{event space})=1$.
+    \item If $\alpha,\beta\in \glssymbol{event space}$ and $\alpha\cap\beta = \emptyset$, then $P(\alpha\cup\beta)=P(\alpha)+P(\beta)$.
+  \end{itemize}
+  Interesting conditions that are implied from these:
+  \begin{itemize}
+    \item $P(\emptyset)=0$
+    \item $P(\alpha\cup\beta)=P(\alpha)+P(\beta)-P(\alpha\cap\beta)$
+  \end{itemize}
+}
+
+\longnewglossaryentry{conditional probability}{name=conditional probability}
+{%
+  The conditional probability of $\beta$ given $\alpha$ is defined as (not defined for $P(\alpha)=0)$):
+  \begin{equation*}
+    P(\beta|\alpha)=\frac{P(\alpha\cap\beta)}{P(\alpha)}
+  \end{equation*}
+  $P(\beta|\alpha)$ is a \gls{probability distribution} since it satisfies its properties.
+}
+
+\longnewglossaryentry{chain rule}{name=chain rule}
+{%
+  Based on the definition of \gls{conditional probability}:
+  \begin{equation*}
+    P(\alpha\cap\beta)=P(\alpha)P(\beta|\alpha)
+  \end{equation*}
+  In general:
+  \begin{equation*}
+    _P(\alpha_1\cap\cdots\cap\alpha_k)=P(\alpha_1)P(\alpha_2|\alpha_1)\cdots P(\alpha_k|\alpha_1\cap\cdots\cap\alpha_{k-1})
+  \end{equation*}
+}
+
+\longnewglossaryentry{bayes rule}{name=Bayes' rule}
+{%
+  \begin{equation*}
+    P(\alpha|\beta)=\frac{P(\beta|\alpha)P(\alpha)}{P(\beta)}
+  \end{equation*}
+}
+
+\longnewglossaryentry{random variable}{name=random variable}
+{%
+  Defined by a function that associates with each outcome in \glssymbol{event space} a value. Example: $f_{Grade}$ associates with every person in \glssymbol{event space} a grade (A,B,C). We can then use expressions like $P(Grade=A)$.\\
+
+  Notation:
+  \begin{itemize}
+    \item  $\bm{X}$,$\bm{Y}$,$\bm{Z}$... for random variables
+    \item  $\bm{x}$,$\bm{y}$,$\bm{z}$... for assigments of values to  $\bm{X}$,$\bm{Y}$,$\bm{Z}$: $P(\bm{X}=\bm{x})\geq0 $ for all $\bm{x}\in \gls{val}$
+    \item  $P(\bm{x})$ is short for $P(\bm{X}=\bm{x})$
+    \item  $x^1$,$x^2$,...$x^k$ for $k=|\gls{val}|$ to enumerate specific values of $\bm{X}$ with categorical values
+  \end{itemize}
+}
+
+\longnewglossaryentry{val}{name=\ensuremath{Val(\bm{X})},sort=Val}
+{%
+  The set of values that a \gls{random variable} $\bm{X}$ can take.
+}
+
+\longnewglossaryentry{multinomial distribution}{name=multinomial distribution}
+{%
+  A distribution over $\bm{x}^1,\cdots,\bm{x}^k$, for $|\gls{val}|$ with $\sum_{i=1}^k P(\bm{x}^i)=1$.
+}
+
+\longnewglossaryentry{bernoulli distribution}{name=Bernoulli distribution}
+{%
+  A \gls{multinomial distribution} with $\gls{val}=\{false,true\}$. Typically, $\bm{x}^0$ denotes the value false and $\bm{x}^1$ the value true.
+}
+
