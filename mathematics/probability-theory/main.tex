@@ -7,13 +7,20 @@
  %\usepackage{glossaries} % acronym will go in main glossary
 \usepackage[nonumberlist,acronym]{glossaries} % make a separate list of acronyms
 
-\loadglsentries{glossary}
+\newglossary*{probability-theory}{Probability Theory}
+\newglossary*{mathematics}{Mathematics}
+
+\loadglsentries[probability-theory]{glossary}
+\loadglsentries[mathematics]{../glossary}
 
 \makeglossaries
 
 \begin{document}
-\glsaddall
 
-\printglossary[style=altlist]
+\glsaddall[types={probability-theory,\acronymtype}]
+
+\printglossary[type=probability-theory, style=altlist]
+\printglossary[type=mathematics, style=altlist]
 \printglossary[type=\acronymtype]
+
 \end{document}

@@ -11,6 +11,9 @@
 *.glg
 *.glo
 *.gls
+*-glg
+*-glo
+*-gls
 *.ist
 *.kilepr
 *.log
