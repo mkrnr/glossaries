@@ -8,8 +8,8 @@
   A set of possible outcomes $\Omega$ with the following properties:
   \begin{itemize}
     \item It contains the empty event $\emptyset$, and the trivial event $\Omega$.
-    \item It is closed under union: If $\alpha, \beta \in S$, then so is $\alpha \cup \beta$.
-    \item It is closed under complementation: If $\alpha \in S$, then so is $\Omega - \alpha$.
+    \item It is closed under union: If $\alpha, \beta \in \glssymbol{measurable set}$, then so is $\alpha \cup \beta$.
+    \item It is closed under complementation: If $\alpha \in \glssymbol{measurable set}$, then so is $\Omega - \alpha$.
   \end{itemize}
 }
 
@@ -35,7 +35,7 @@
 
 \longnewglossaryentry{conditional probability}{name=conditional probability}
 {%
-  The conditional probability of $\beta$ given $\alpha$ is defined as (not defined for $P(\alpha)=0)$):
+  The conditional probability of $\beta$ given $\alpha$ with $P(\alpha)>0$ is defined as:
   \begin{equation*}
     P(\beta|\alpha)=\frac{P(\alpha\cap\beta)}{P(\alpha)}
   \end{equation*}
@@ -44,13 +44,13 @@
 
 \longnewglossaryentry{conditional distribution}{name=conditional distribution}
 {%
-  A \gls{probability distribution} in the form of $P(\bm{X}|\bm{Y})$ where for each value of $\bm{Y}$ this object assigns a probability over values of $\bm{X}$ using the \gls{conditional probability}. $\bm{Y}$ represents \textit{prior} knowledge.
+  A \gls{probability distribution} in the form of $P(X|Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(X=x)$. $Y$ represents \textit{prior} knowledge.
 }
 
 
 \longnewglossaryentry{chain rule}{name=chain rule}
 {%
-  Based on the definition of \gls{conditional probability}:
+  Based on the definition of \gls{conditional probability}, for events $\alpha$ and $\beta$:
   \begin{equation*}
     P(\alpha\cap\beta)=P(\alpha)P(\beta|\alpha)
   \end{equation*}
@@ -58,13 +58,13 @@
   \begin{equation*}
     _P(\alpha_1\cap\cdots\cap\alpha_k)=P(\alpha_1)P(\alpha_2|\alpha_1)\cdots P(\alpha_k|\alpha_1\cap\cdots\cap\alpha_{k-1})
   \end{equation*}\\[0.1cm]
-  For \glspl{random variable} $\bm{X}$,$\bm{Y}$:
+  For \glspl{random variable} $X$,$Y$:
   \begin{equation*}
-    P(\bm{X},\bm{Y})=P(\bm{X})P(\bm{Y}|\bm{X})
+    P(X,Y)=P(X)P(Y|X)
   \end{equation*}
   In general:
   \begin{equation*}
-    P(\bm{X}_1,\dots\bm{X}_k)=P(\bm{X}_1)P(\bm{X}_2|\bm{X}_1)\cdots P(\bm{X}_k|\bm{X}_1,\cdots,\bm{X}_{k-1})
+    P(X_1,\dots X_k)=P(X_1)P(X_2|X_1)\cdots P(X_k|X_1,\cdots,X_{k-1})
   \end{equation*}
 
 }
@@ -76,9 +76,9 @@
     P(\alpha|\beta)=\frac{P(\alpha)P(\beta|\alpha)}{P(\beta)}
   \end{equation*}\\[0.1cm]
 
-  For \glspl{random variable} $\bm{X}$,$\bm{Y}$:
+  For \glspl{random variable} $X$,$Y$:
   \begin{equation*}
-    P(\bm{X}|\bm{Y})=\frac{P(\bm{X})P(\bm{Y}|\bm{X})}{P(\bm{Y})}
+    P(X|Y)=\frac{P(X)P(Y|X)}{P(Y)}
   \end{equation*}
 }
 
@@ -90,47 +90,67 @@
 
   Notation:
   \begin{itemize}
-    \item $\bm{X}$,$\bm{Y}$,$\bm{Z}$... for random variables
-    \item $\bm{x}$,$\bm{y}$,$\bm{z}$... for assigments of values to  $\bm{X}$,$\bm{Y}$,$\bm{Z}$: $P(\bm{X}=\bm{x})\geq0 $ for all $\bm{x}\in \gls{val}$
-    \item $P(\bm{x})$ is short for $P(\bm{X}=\bm{x})$
-    \item $\sum_{\bm{x}}$ is a sum over all possble values that $\bm{X}$ can take: $\sum_{\bm{x}}P(\bm{x})=1$
-    \item $\bm{x}^1$,$\bm{x}^2$,...$\bm{x}^k$ for $k=|\gls{val}|$ to enumerate specific values of $\bm{X}$ with categorical values
-    \item For $\bm{Y}\subseteq\bm{X}$, $\bm{x}\langle\bm{Y}\rangle$ is the assignment within $\bm{x}$ to the variables in $\bm{Y}$.
-    \item For two assignments $\bm{x}$ and $\bm{y}$, $\bm{x}\sim\bm{y}$ if they agree on the variables in their intersection: $\bm{x}\langle\bm{X}\cap\bm{Y}\rangle=\bm{y}\langle\bm{X}\cap\bm{Y}\rangle$
+    \item $X$,$Y$,$Z$... for random variables
+    \item $x$,$y$,$z$... for assigments of values to  $X$,$Y$,$Z$: $P(X=x)\geq0 $ for all $x\in \gls{val}(X)$
+    \item $P(x)$ is short for $P(X=x)$
+    \item $\sum_x$ is a sum over all possble values that $X$ can take: $\sum_xP(x)=1$
   \end{itemize}
 }
 
-\longnewglossaryentry{val}{name=\ensuremath{Val(\bm{X})},sort=Val}
+\longnewglossaryentry{set of random variables}{name=set of random variables}
 {%
-  The set of values that a \gls{random variable} $\bm{X}$ can take.
+  Notation:
+  \begin{itemize}
+    \item $\bm{X}$,$\bm{Y}$,$\bm{Z}$... for sets of \glspl{random variable}
+    \item $\bm{x}$,$\bm{y}$,$\bm{z}$... for assigments of values to the random varibales in the sets $X$,$Y$,$Z$
+    \item For $\bm{Y}\subseteq \bm{X}$, $\bm{x}\langle \bm{Y}\rangle$ is the assignment within $\bm{x}$ to the variables in $\bm{Y}$.
+    \item For two assignments $\bm{x}$ and $\bm{y}$, $\bm{x}\sim \bm{y}$ if they agree on the variables in their intersection: $\bm{x}\langle\bm{X}\cap\bm{Y}\rangle=\bm{y}\langle\bm{X}\cap\bm{Y}\rangle$
+  \end{itemize}
+}
+
+\longnewglossaryentry{categorical random variable}{name=categorical random variable}
+{%
+  A \gls{random variable} that can be expressed with separate probabilities specified for each of the $k$ possible outcomes.
+
+  Notation:
+  \begin{itemize}
+    \item $x^1$,$x^2$,...$x^k$ for $k=|\gls{val}(X)|$ to enumerate the specific values of $X$.
+  \end{itemize}
+}
+
+\longnewglossaryentry{val}{name=\ensuremath{Val},sort=Val}
+{%
+  For a \gls{random variable} $X$, $Val(X)$ is the set of values that $X$ can take.
+
+  For a \gls{set of random variables} $\bm{X}$, $Val(\bm{X})$ is the set of possible assignments $\bm{x}$ to $\bm{X}$.
 }
 
 \longnewglossaryentry{multinomial distribution}{name=multinomial distribution}
 {%
-  A distribution over $\bm{x}^1,\cdots,\bm{x}^k$, for $|\gls{val}|$ with $\sum_{i=1}^k P(\bm{x}^i)=1$.
+  A distribution over $x^1,\cdots,x^k$, for $|\gls{val}(X)|$ with $\sum_{i=1}^k P(x^i)=1$.
 }
 
 \longnewglossaryentry{bernoulli distribution}{name=Bernoulli distribution}
 {%
-  A \gls{multinomial distribution} with $\gls{val}=\{false,true\}$. Typically, $\bm{x}^0$ denotes the value false and $\bm{x}^1$ the value true.
+  A \gls{multinomial distribution} with $\gls{val}(X)=\{false,true\}$. Typically, $x^0$ denotes the value \textit{false} and $x^1$ the value \textit{true}.
 }
 
 \longnewglossaryentry{marginal distribution}{name=marginal distribution}
 {%
-  A \gls{probability distribution} over events that can be described using $\bm{X}$, denoted by $P(\bm{X})$. The only difference to the definition of a \gls{probability distribution} is that here we are restricted to the subsets of \glssymbol{measurable set} that can be described with $\bm{X}$.
+  A \gls{probability distribution} over events that can be described using $X$, denoted by $P(X)$. The only difference to the definition of a \gls{probability distribution} is that here we are restricted to the subsets of \glssymbol{measurable set} that can be described with $X$.
 }
 
 \longnewglossaryentry{joint distribution}{name=joint distribution}
 {%
-  A \gls{probability distribution} over a set $\mathcal{X}=\{\bm{X}_1,\cdots,\bm{X}_n\}$ denoted with $P(\bm{X}_1,\cdots,\bm{X}_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\mathcal{X}$: $\xi\in\glslink{val}{Val(\mathcal{X})}$
+  A \gls{probability distribution} over a set $\bm{X}=\{X_1,\cdots,X_n\}$, denoted with $P(X_1,\cdots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\bm{X}$: $\xi\in\glslink{val}{Val(\mathcal{X})}$
 
   Properties:
   \begin{itemize}
-    \item The joint distribution of 2 variables has to be consistent with the \gls{marginal distribution}: $P(\bm{x})=\sum_{\bm{y}}P(\bm{x},\bm{y})$
-    \item The most fine-grained event possible is $\bm{X}_1=\bm{x}_1$ and $\bm{X}_1=\bm{x}_1$,$\cdots$, and $\bm{X}_n=\bm{x}_n$ for a choice of values $\bm{x}_1,\cdots,\bm{x}_n$.
+    \item The joint distribution of 2 variables has to be consistent with the \gls{marginal distribution}: $P(x)=\sum_{y}P(x,y)$
+    \item The most fine-grained event possible is $X_1=x_1$ and $X_1=x_1$,$\cdots$, and $X_n=x_n$ for a choice of values $x_1,\cdots,x_n$.
     \begin{itemize}
       \item Two of this events are either identical or disjoint.
-      \item Any event defined using variables in $\mathcal{X}$ must be a union of a set of such events.
+      \item Any event defined using variables in $\bm{X}$ must be a union of a set of such events.
     \end{itemize}
     \item The probability computations remain the same whether we consider the original outcome space or the \gls{canonical outcome space}.
   \end{itemize}
@@ -139,11 +159,29 @@
 
 \longnewglossaryentry{canonical outcome space}{name=canonical outcome space}
 {%
-  An \gls{event space} where each outcome corresponds to a \glslink{joint distribution}{joint assignment} to $\bm{X}_1,\dots, \bm{X}_n$.
+  An \gls{event space} where each outcome corresponds to a \glslink{joint distribution}{joint assignment} to $X_1,\dots, X_n$.
 }
 
 \longnewglossaryentry{atomic outcome}{name=atomic outcome, symbol=\ensuremath{\xi}}
 {%
-  An outcome that assigns a value to each variable in $\mathcal{X}$.
+  An outcome that assigns a value to each \gls{random variable} in a set of random variables $\bm{X}$.
+}
+
+\longnewglossaryentry{independence}{name=independence}
+{%
+  An event $\alpha$ is independent of event $\beta$ in $P$, denoted $P\models(\alpha\perp\beta)$, if $P(\alpha|\beta)=P(\alpha)$ or if $P(\beta)=0$.
+
+  Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta|\gamma)$ \acrshort{iff} $P(\alpha\cap\beta|\gamma)=P(\alpha|\gamma)P(\beta|\gamma)$.
+}
+
+\longnewglossaryentry{conditional independence}{name=conditional independence}
+{%
+  Givent events $\alpha$, $\beta$, and $\gamma$: $\alpha$ is conditionally independent of event $\beta$ given event $\gamma$ in $P$, denoted $P\models(\alpha\perp\beta|\gamma)$, if $P(\alpha|\beta\cap\gamma)=P(\alpha|\gamma)$ or if $P(\beta\cap\gamma)=0$.
+
+  Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta)$ \acrshort{iff} $P(\alpha\cap\beta)=P(\alpha)P(\beta)$.\\[0.1cm]
+
+  Given sets of random variables $\bm{X}$, $\bm{Y}$, and $\bm{Z}$: $\bm{X}$ is conditionally independent of $\bm{Y}$ given $\bm{Z}$ in $P$, denoted $P\models(\bm{X}\perp\bm{Y}|\bm{Z})$, if $P(\bm{X}|\bm{Y}\cap\bm{Z})=P(\bm{X}|\bm{Z})$ or if $P(\bm{Y}\cap\bm{Z})=0$.
+
+  Alternatively: A \gls{probability distribution} $P$ satisfies $(\bm{X}\perp\bm{Y})$ \acrshort{iff} $P(\bm{X}\cap\bm{Y})=P(\bm{X})P(\bm{Y})$.
 }
 
