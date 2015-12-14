@@ -37,14 +37,14 @@
 {%
   The conditional probability of $\beta$ given $\alpha$ with $P(\alpha)>0$ is defined as:
   \begin{equation*}
-    P(\beta|\alpha)=\frac{P(\alpha\cap\beta)}{P(\alpha)}
+    P(\beta\mid\alpha)=\frac{P(\alpha\cap\beta)}{P(\alpha)}
   \end{equation*}
-  $P(\beta|\alpha)$ is a \gls{probability distribution} since it satisfies its properties.
+  $P(\beta\mid\alpha)$ is a \gls{probability distribution} since it satisfies its properties.
 }
 
 \longnewglossaryentry{conditional distribution}{name=conditional distribution}
 {%
-  A \gls{probability distribution} in the form of $P(X|Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(X=x)$. $Y$ represents \textit{prior} knowledge.
+  A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(X=x)$. $Y$ represents \textit{prior} knowledge.
 }
 
 
@@ -52,19 +52,19 @@
 {%
   Based on the definition of \gls{conditional probability}, for events $\alpha$ and $\beta$:
   \begin{equation*}
-    P(\alpha\cap\beta)=P(\alpha)P(\beta|\alpha)
+    P(\alpha\cap\beta)=P(\alpha)P(\beta\mid\alpha)
   \end{equation*}
   In general:
   \begin{equation*}
-    _P(\alpha_1\cap\cdots\cap\alpha_k)=P(\alpha_1)P(\alpha_2|\alpha_1)\cdots P(\alpha_k|\alpha_1\cap\cdots\cap\alpha_{k-1})
+    _P(\alpha_1\cap\cdots\cap\alpha_k)=P(\alpha_1)P(\alpha_2\mid\alpha_1)\cdots P(\alpha_k\mid\alpha_1\cap\cdots\cap\alpha_{k-1})
   \end{equation*}\\[0.1cm]
   For \glspl{random variable} $X$,$Y$:
   \begin{equation*}
-    P(X,Y)=P(X)P(Y|X)
+    P(X,Y)=P(X)P(Y\mid X)
   \end{equation*}
   In general:
   \begin{equation*}
-    P(X_1,\dots X_k)=P(X_1)P(X_2|X_1)\cdots P(X_k|X_1,\cdots,X_{k-1})
+    P(X_1,\dots X_k)=P(X_1)P(X_2\mid X_1)\cdots P(X_k\mid X_1,\cdots,X_{k-1})
   \end{equation*}
 
 }
@@ -73,12 +73,12 @@
 {%
   Derived from the definition of \gls{conditional probability}:
   \begin{equation*}
-    P(\alpha|\beta)=\frac{P(\alpha)P(\beta|\alpha)}{P(\beta)}
+    P(\alpha\mid\beta)=\frac{P(\alpha)P(\beta\mid\alpha)}{P(\beta)}
   \end{equation*}\\[0.1cm]
 
   For \glspl{random variable} $X$,$Y$:
   \begin{equation*}
-    P(X|Y)=\frac{P(X)P(Y|X)}{P(Y)}
+    P(X\mid Y)=\frac{P(X)P(Y\mid X)}{P(Y)}
   \end{equation*}
 }
 
@@ -114,7 +114,7 @@
 
   Notation:
   \begin{itemize}
-    \item $x^1$,$x^2$,...$x^k$ for $k=|\gls{val}(X)|$ to enumerate the specific values of $X$.
+    \item $x^1$,$x^2$,...$x^k$ for $k=\lvert\gls{val}(X)\rvert$ to enumerate the specific values of $X$.
   \end{itemize}
 }
 
@@ -127,7 +127,7 @@
 
 \longnewglossaryentry{multinomial distribution}{name=multinomial distribution}
 {%
-  A distribution over $x^1,\cdots,x^k$, for $|\gls{val}(X)|$ with $\sum_{i=1}^k P(x^i)=1$.
+  A distribution over $x^1,\cdots,x^k$, for $\lvert\gls{val}(X)\rvert$ with $\sum_{i=1}^k P(x^i)=1$.
 }
 
 \longnewglossaryentry{bernoulli distribution}{name=Bernoulli distribution}
@@ -169,19 +169,52 @@
 
 \longnewglossaryentry{independence}{name=independence}
 {%
-  An event $\alpha$ is independent of event $\beta$ in $P$, denoted $P\models(\alpha\perp\beta)$, if $P(\alpha|\beta)=P(\alpha)$ or if $P(\beta)=0$.
+  An event $\alpha$ is independent of event $\beta$ in $P$, denoted $P\models(\alpha\perp\beta)$, if $P(\alpha\mid\beta)=P(\alpha)$ or if $P(\beta)=0$.
 
-  Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta|\gamma)$ \acrshort{iff} $P(\alpha\cap\beta|\gamma)=P(\alpha|\gamma)P(\beta|\gamma)$.
+  Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta\mid\gamma)$ \acrshort{iff} $P(\alpha\cap\beta\mid\gamma)=P(\alpha\mid\gamma)P(\beta\mid\gamma)$.
 }
 
 \longnewglossaryentry{conditional independence}{name=conditional independence}
 {%
-  Givent events $\alpha$, $\beta$, and $\gamma$: $\alpha$ is conditionally independent of event $\beta$ given event $\gamma$ in $P$, denoted $P\models(\alpha\perp\beta|\gamma)$, if $P(\alpha|\beta\cap\gamma)=P(\alpha|\gamma)$ or if $P(\beta\cap\gamma)=0$.
+  Givent events $\alpha$, $\beta$, and $\gamma$: $\alpha$ is conditionally independent of event $\beta$ given event $\gamma$ in $P$, denoted $P\models(\alpha\perp\beta\mid\gamma)$, if $P(\alpha\mid\beta\cap\gamma)=P(\alpha\mid\gamma)$ or if $P(\beta\cap\gamma)=0$.
 
   Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta)$ \acrshort{iff} $P(\alpha\cap\beta)=P(\alpha)P(\beta)$.\\[0.1cm]
 
-  Given sets of random variables $\bm{X}$, $\bm{Y}$, and $\bm{Z}$: $\bm{X}$ is conditionally independent of $\bm{Y}$ given $\bm{Z}$ in $P$, denoted $P\models(\bm{X}\perp\bm{Y}|\bm{Z})$, if $P(\bm{X}|\bm{Y}\cap\bm{Z})=P(\bm{X}|\bm{Z})$ or if $P(\bm{Y}\cap\bm{Z})=0$.
+  Given sets of random variables $\bm{X}$, $\bm{Y}$, and $\bm{Z}$: $\bm{X}$ is conditionally independent of $\bm{Y}$ given $\bm{Z}$ in $P$, denoted $P\models(\bm{X}\perp\bm{Y}\mid\bm{Z})$, if $P(\bm{X}\mid\bm{Y}\cap\bm{Z})=P(\bm{X}\mid\bm{Z})$ or if $P(\bm{Y}\cap\bm{Z})=0$.
 
   Alternatively: A \gls{probability distribution} $P$ satisfies $(\bm{X}\perp\bm{Y})$ \acrshort{iff} $P(\bm{X}\cap\bm{Y})=P(\bm{X})P(\bm{Y})$.
+
+  For conditional independence, the following independence properties also hold: \gls{symmetry}, \gls{decomposition}, \gls{weak union}, \gls{contraction}
 }
 
+\longnewglossaryentry{symmetry}{name=symmetry}
+{%
+  Given sets of random variables $\bm{X}$, $\bm{Y}$, and $\bm{Z}$:
+  \begin{equation*}
+    (\bm{X}\perp\bm{Y}\mid\bm{Z})\implies(\bm{Y}\perp\bm{X}\mid\bm{Z})
+  \end{equation*}
+}
+
+\longnewglossaryentry{decomposition}{name=decomposition}
+{%
+  Given sets of random variables $\bm{W}$, $\bm{X}$, $\bm{Y}$, and $\bm{Z}$:
+  \begin{equation*}
+    (\bm{X}\perp\bm{Y},\bm{W}\mid\bm{Z})\implies(\bm{X}\perp\bm{Y}\mid\bm{Z})
+  \end{equation*}
+}
+
+\longnewglossaryentry{weak union}{name=weak union}
+{%
+  Given sets of random variables $\bm{W}$, $\bm{X}$, $\bm{Y}$, and $\bm{Z}$:
+  \begin{equation*}
+    (\bm{X}\perp\bm{Y},\bm{W}\mid \bm{Z})\implies(\bm{X}\perp\bm{Y}\mid\bm{Z},\bm{W})
+  \end{equation*}
+}
+
+\longnewglossaryentry{contraction}{name=contraction}
+{%
+  Given sets of random variables $\bm{W}$, $\bm{X}$, $\bm{Y}$, and $\bm{Z}$:
+  \begin{equation*}
+    (\bm{X}\perp\bm{W}\mid\bm{Z},\bm{Y})~\&~(\bm{X}\perp\bm{Y}\mid\bm{Z})\implies(\bm{X}\perp\bm{Y},\bm{W}\mid\bm{Z})
+  \end{equation*}
+}
