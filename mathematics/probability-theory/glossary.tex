@@ -44,7 +44,7 @@
 
 \longnewglossaryentry{conditional distribution}{name=conditional distribution}
 {%
-  A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(X=x)$. $Y$ represents \textit{prior} knowledge.
+  A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(Y=y)$. $Y$ represents \textit{prior} knowledge.
 }
 
 
@@ -97,7 +97,7 @@
   \end{itemize}
 }
 
-\longnewglossaryentry{set of random variables}{name=set of random variables}
+\longnewglossaryentry{set of random variables}{name=set of random variables, plural=sets of random variables}
 {%
   Notation:
   \begin{itemize}
@@ -218,3 +218,53 @@
     (\bm{X}\perp\bm{W}\mid\bm{Z},\bm{Y})~\&~(\bm{X}\perp\bm{Y}\mid\bm{Z})\implies(\bm{X}\perp\bm{Y},\bm{W}\mid\bm{Z})
   \end{equation*}
 }
+
+\longnewglossaryentry{positive distribution}{name=positive distribution}
+{%
+  A \gls{probability distribution} $P$ where for all events $\alpha\in\glssymbol{measurable set}$ such that $\alpha\neq\emptyset$, we have that $P(\alpha)>0$.
+
+  Positive distributions have the property of \gls{intersection}.
+}
+
+\longnewglossaryentry{intersection}{name=intersection}
+{%
+  For \glspl{positive distribution}, and for mutually disjoint \glspl{set of random variables} $\bm{W}$, $\bm{X}$, $\bm{Y}$, and $\bm{Z}$:
+  \begin{equation*}
+    (\bm{X}\perp\bm{Y}\mid\bm{Z},\bm{W})~\&~(\bm{X}\perp\bm{W}\mid\bm{Z},\bm{Y})\implies(\bm{X}\perp\bm{Y},\bm{W}\mid\bm{Z})
+  \end{equation*}
+}
+
+\longnewglossaryentry{probability query}{name=probability query}
+{%
+  %TODO define "query"
+  A query that consists of the \gls{evidence} $\bm{E}$ and \gls{query variables} $\bm{Y}$.
+
+  The task is to compute the \gls{posterior probability distribution} $P(\bm{Y}\mid\bm{E}=\bm{e})$.
+}
+
+\longnewglossaryentry{evidence}{name=evidence}
+{%
+  A subset $\bm{E}$ of \glspl{random variable} , and an instantiation $\bm{e}$ to these variables. Part of a \gls{probability query}.
+}
+
+\longnewglossaryentry{query variables}{name=query variables}
+{%
+  A subset $\bm{Y}$ of \glspl{random variable} in a given network. Part of a \gls{probability query}.
+}
+
+\longnewglossaryentry{posterior probability distribution}{name=posterior probability distribution}
+{%
+  A \gls{probability distribution} over the values $\bm{y}$ of $\bm{Y}$, conditioned on the fact that $\bm{E}=\bm{e}$:
+  \begin{equation*}
+    P(\bm{Y}\mid\bm{E}=\bm{e})
+  \end{equation*}
+
+  Alternative definition: A marginal over $\bm{Y}$, in the distibution obtained by \gls{conditioning} on $\bm{e}$.
+}
+
+\longnewglossaryentry{conditioning}{name=conditioning}
+{%
+  %TODO find better description
+  The concept that beliefs depend on available information. See \gls{conditional probability}.
+}
+
