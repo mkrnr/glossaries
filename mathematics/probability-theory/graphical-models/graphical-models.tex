@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{bm}
+\usepackage{amssymb,amsmath}
+
+\usepackage[nonumberlist,acronym]{glossaries} % make a separate list of acronyms
+
+\newglossary*{graphical-models}{Graphical Models}
+\newglossary*{probability-theory}{Probability Theory}
+\newglossary*{mathematics}{Mathematics}
+
+\loadglsentries[graphical-models]{glossary}
+\loadglsentries[probability-theory]{../glossary}
+\loadglsentries[mathematics]{../../glossary}
+
+\makeglossaries
+
+\begin{document}
+
+\glsaddall[types={graphical-models}]
+
+\printglossary[type=graphical-models, style=altlist]
+\printglossary[type=probability-theory, style=altlist]
+\printglossary[type=mathematics, style=altlist]
+\printglossary[type=\acronymtype]
+
+\end{document}
