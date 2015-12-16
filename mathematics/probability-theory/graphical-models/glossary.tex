@@ -1,5 +1,28 @@
+% ---- Glossary Entries ----
+
 \longnewglossaryentry{conditional random field}{name=conditional random field}
 {%
   A \ldots
 }
+
+\longnewglossaryentry{factor}{name=factor, symbol=\ensuremath{\phi}}
+{%
+  Given a \gls{set of random variables} $\bm{D}$, a factor $\phi$ is a function from $\gls{val}(\bm{D})$ to ${\rm I\!R}$. A factor is called nonnegative if all its entries are nonnegative. $\bm{D}$ is called the \glslink{factor scope}{scope of the factor} and denoted \glssymbol{factor scope}.
+}
+
+\longnewglossaryentry{factor scope}{name=factor scope, symbol=\ensuremath{Scope[\phi]}}
+{%
+  A \gls{set of random variables} $\bm{D}$ of which $\gls{val}(\bm{D})$ is used as the input for the \gls{factor} function. $\bm{D}$ is denoted $Scope[\phi]$.
+}
+
+\longnewglossaryentry{i-map}{name=I-map, symbol=\ensuremath{\mathcal{K}}}
+{%
+  Short for independency map. A graph object $\mathcal{K}$ associated with a \gls{set of independencies} $\mathcal{I}(\mathcal{K})$ is an I-map for a set of indepencencies $\mathcal{I}$ if $\mathcal{I}(\mathcal{K})\subseteq\mathcal{I}$.
+
+  Additionally, $\mathcal{G}$ is and I-map for a \gls{probability distribution} $P$ if $\mathcal{G}$ is an I-map for $\mathcal{I}(P)$.
+
+}
+
+% ---- Acronyms ----
+
 

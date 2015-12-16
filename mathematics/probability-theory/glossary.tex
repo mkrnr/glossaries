@@ -1,3 +1,5 @@
+% ---- Glossary Entries ----
+
 \longnewglossaryentry{event}{name=event}
 {%
   Based on a \gls{event space} of possible outcomes \glssymbol{event space} and a set of measurable events \glssymbol{measurable set} to which we want to assign probabilities, an event $a \in \glssymbol{measurable set}$ is a subset of \glssymbol{event space}.\\
@@ -44,7 +46,9 @@
 
 \longnewglossaryentry{conditional distribution}{name=conditional distribution}
 {%
-  A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$ this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(Y=y)$. $Y$ represents \textit{prior} knowledge.
+  A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$, this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(Y=y)$. $Y$ represents \textit{prior} knowledge.
+
+  Having \glspl{set of random variables} $\bm{X}$ and $\bm{Y}$ with $P(\bm{Y}|\bm{X})$, $\bm{Y}$ is called a set of \glspl{target variable} and $\bm{X}$ a set of \glspl{observed variable}.
 }
 
 
@@ -142,7 +146,7 @@
 
 \longnewglossaryentry{joint distribution}{name=joint distribution}
 {%
-  A \gls{probability distribution} over a set $\bm{X}=\{X_1,\cdots,X_n\}$, denoted with $P(X_1,\cdots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\bm{X}$: $\xi\in\glslink{val}{Val(\mathcal{X})}$
+  A \gls{probability distribution} over a set $\mathcal{X}=\{X_1,\cdots,X_n\}$, denoted with $P(X_1,\cdots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\mathcal{X}$: $\xi\in\gls{val}(\mathcal{X})$
 
   Properties:
   \begin{itemize}
@@ -242,7 +246,7 @@
   The task is to compute the \gls{posterior probability distribution} $P(\bm{Y}\mid\bm{E}=\bm{e})$.
 }
 
-\longnewglossaryentry{evidence}{name=evidence}
+\longnewglossaryentry{evidence}{name=evidence,symbol=\ensuremath{\bm{E}}}
 {%
   A subset $\bm{E}$ of \glspl{random variable} , and an instantiation $\bm{e}$ to these variables. Part of a \gls{probability query}.
 }
@@ -268,3 +272,37 @@
   The concept that beliefs depend on available information. See \gls{conditional probability}.
 }
 
+\longnewglossaryentry{target variable}{name=target variable}
+{%
+  %TODO add
+}
+
+\longnewglossaryentry{observed variable}{name=observed variable}
+{%
+  %TODO add
+}
+
+\longnewglossaryentry{map query}{name=MAP query}
+{%
+  Also called \acrfull{mpe}, aims to find the \gls{map assignment}.
+}
+
+\longnewglossaryentry{map assignment}{name=MAP assignment}
+{%
+  Given a \gls{set of random variables} $\bm{W}=\mathcal{X}-\glssymbol{evidence}$, the task is to find the most likely joint assignment to the variables in $\bm{W}$ given the \gls{evidence} $\glssymbol{evidence}=\bm{e}$:
+  \begin{equation*}
+    \text{MAP}(\bm{W}|\bm{e})=\glslink{argmax}{\argmax\limits_{\bm{w}}} P(\bm{w},\bm{e})
+  \end{equation*}
+
+}
+
+\longnewglossaryentry{set of independencies}{name=set of independencies, symbol=\ensuremath{\mathcal{I}}}
+{%
+  A set of independence assertions, denoted $\mathcal{I}$, of the form $(\bm{X}\perp\bm{Y}\mid\bm{Z})$. $\mathcal{I}(P)$ denotes the set of independencies that hold in a \gls{probability distribution} $P$ over a \gls{set of random variables} $\mathcal{X}$.
+}
+
+
+
+% ---- Acronyms
+
+\newacronym{mpe}{MPE}{most probable explanation}
