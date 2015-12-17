@@ -1,0 +1,44 @@
+\DeclareMathOperator*{\undedge}{\mbox{~\textbf{---}\,}}
+
+% ---- Glossary Entries ----
+
+\longnewglossaryentry{complete graph}{name=complete graph}
+{%
+  A simple undirected \gls{graph} in which every pair of distinct \glspl{vertex} is connected by a unique \glspl{edge}.
+}
+
+\longnewglossaryentry{graph}{name=graph}
+{%
+  A data structure $\mathcal{K}$ consisting of a set of \glspl{node} $\mathcal{X}=\{X_1,\dots,X_n\}$ and a set of \glspl{edge}.
+}
+
+\longnewglossaryentry{node}{name=node}
+{%
+  A fundamental unit of which graphs are formed.
+}
+
+\longnewglossaryentry{edge}{name=edge}
+{%
+  A pair of \glspl{node} $X_i,X_j$ can be connected by an directed edge $X_i\to X_j$ or $X_j\to X_i$, or by an undirected edge $X_i\undedge X_j$.
+
+  If an edge can either be directed or undirected, we write $X_i\rightleftharpoons X_j$.
+}
+
+\longnewglossaryentry{subgraph}{name=subgraph}
+{%
+  A \gls{graph} which is associated with a subset of nodes from another graph.
+}
+
+\longnewglossaryentry{complete subgraph}{name=complete subgraph}
+{%
+  A \gls{subgraph} over a set of \glspl{node} $\bm{X}$ is complete if every two nodes in $\bm{X}$ are connected by some \gls{edge}. $\bm{X}$ is called a \gls{clique}.
+}
+
+\longnewglossaryentry{clique}{name=clique}
+{%
+  A set of \gls{node} which form a \gls{complete subgraph}.
+
+  A clique is maximal if for any superset of \glspl{node} $\bm{Y}\supset\bm{X}$, $\bm{Y}$ is not a clique.
+}
+% ---- Acronyms ----
+

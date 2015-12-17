@@ -1,13 +1,8 @@
 % ---- Glossary Entries ----
 
-\longnewglossaryentry{conditional random field}{name=conditional random field}
-{%
-  A \ldots
-}
-
 \longnewglossaryentry{factor}{name=factor, symbol=\ensuremath{\phi}}
 {%
-  Given a \gls{set of random variables} $\bm{D}$, a factor $\phi$ is a function from $\gls{val}(\bm{D})$ to ${\rm I\!R}$. A factor is called nonnegative if all its entries are nonnegative. $\bm{D}$ is called the \glslink{factor scope}{scope of the factor} and denoted \glssymbol{factor scope}.
+  Given a \gls{set of random variables} $\bm{D}$, a factor $\phi$ is a function from $\gls{val}(\bm{D})$ to ${\rm I\!R}$ (not normalized). A factor is called nonnegative if all its entries are nonnegative. $\bm{D}$ is called the \glslink{factor scope}{scope of the factor} and denoted \glssymbol{factor scope}.
 }
 
 \longnewglossaryentry{factor scope}{name=factor scope, symbol=\ensuremath{Scope[\phi]}}
@@ -23,6 +18,71 @@
 
 }
 
+\longnewglossaryentry{markov network}{name=Markov network}
+{%
+  An undirected graph where the the vertices represent the \glspl{random variable} and the edges correspond to a notion of direct probabilistic interaction between the neighboring variables.\\
+
+  For each edge we create a \gls{factor} containing the two adjacent vertices, and assign values to each of the possible assignment pairs. A global model (probability distribution) is defined by multiplying all factors, normalized by a \gls{partitioning function} as a normailizing constant.
+
+}
+
+\longnewglossaryentry{partitioning function}{name=partitioning function, symbol=\ensuremath{Z}}
+{%
+  A normalizing constant, denoted $Z$, taking the sum of the \glspl{factor} of a \gls{set of random variables} over all its assignments.
+}
+
+\longnewglossaryentry{factor product}{name=factor product, symbol=\ensuremath{\psi}}
+{%
+  The product of two \glspl{factor} $\phi_1(\bm{X},\bm{Y})$ and $\phi_2(\bm{Y},\bm{Z})$, agreeing on $\bm{Y}$ in the following way:
+  \begin{equation*}
+    \psi(\bm{X},\bm{Y},\bm{Z})=\phi_1(\bm{X},\bm{Y})\cdot\phi_2(\bm{Y},\bm{Z})
+  \end{equation*}
+  where $\bm{X}$, $\bm{Y}$, and $\bm{Z}$ are \glspl{set of random variables}.
+}
+
+\longnewglossaryentry{gibbs distribution}{name=Gibbs distribution, symbol=\ensuremath{P_{\Phi}}}
+{%
+  A \gls{probability distribution} $P_{\Phi}$ is a Gibbs distribution parameterized by a set of \glspl{factor} $\Phi=\{\phi_1(\bm{D}_1),\dots,\phi_K(\bm{D}_K)\}$ if it is defined as follows:
+  \begin{equation*}
+    P_{\Phi}(X_1,\dots,X_n)=\frac{1}{Z}\tilde{P}_{\Phi}(X_1,\dots,X_n),
+  \end{equation*}
+  where
+  \begin{equation*}
+    \tilde{P}_{\Phi}(X_1,\dots,X_n)=\prod_{i=1}^{m}\phi_i(\bm{D}_i)
+  \end{equation*}
+  is an unnormalized measure and
+  \begin{equation*}
+    Z=\sum_{X_1,\ldots,X_n}\tilde{P}_{\Phi}(X_1,\dots,X_n)
+  \end{equation*}
+  is the \gls{partitioning function}.
+}
+
+\longnewglossaryentry{markov network factorization}{name=Markov network factorization}
+{%
+  A \gls{gibbs distribution} $P_{\Phi}$ with $\Phi=\{\phi_1(\bm{D}_1),\dots,\phi_K(\bm{D}_K)\}$ factorizes over a \gls{markov
+network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subgraph} of $\mathcal{H}$.
+}
+
+\longnewglossaryentry{conditional random field}{name=conditional random field}
+{%
+  Given a set of \glspl{target variable} $\bm{Y}$ and $\bm{X}$ is a (disjoint) set of \glspl{observed variable}An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ where . The network is annotated with a set of \glspl{factor} $\phi_1(\bm{D}_1),\dots,\phi_m(\bm{D}_m)$ such that each $\bm{D}_i\nsubseteq\bm{X}$. The network encodes a \gls{conditional distribution} with
+  \begin{equation*}
+    P(\bm{Y}\mid\bm{X})=\frac{1}{Z(\bm{X})}\tilde{P}(\bm{Y},\bm{X})
+  \end{equation*}
+  where
+  \begin{equation*}
+    \tilde{P}(\bm{Y},\bm{X})=\prod_{i=1}^{m}\phi_i(\bm{D}_i)
+  \end{equation*}
+  is an unnormalized measure and
+  \begin{equation*}
+    Z(\bm{X})=\sum_{\bm{Y}}\tilde{P}(\bm{Y},\bm{X})
+  \end{equation*}
+  is the \gls{partitioning function}.
+
+  Two variables in $\mathcal{H}$ are connected by an (undirected) \gls{edge} whenever they appear together in the \glslink{factor scope}{scope} of some \gls{factor}.
+}
+
+
 % ---- Acronyms ----
 
-
+\newacronym{crf}{CRF}{\gls{conditional random field}}
