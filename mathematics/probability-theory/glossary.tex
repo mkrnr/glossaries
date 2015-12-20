@@ -44,7 +44,7 @@
   $P(\beta\mid\alpha)$ is a \gls{probability distribution} since it satisfies its properties.
 }
 
-\longnewglossaryentry{conditional distribution}{name=conditional distribution}
+\longnewglossaryentry{conditional probability distribution}{name=conditional probability distribution}
 {%
   A \gls{probability distribution} in the form of $P(X\mid Y)$ where for each value of $Y$, this object assigns a probability over values of $X$ using the \gls{conditional probability}. It is only defined for non-zero $P(Y=y)$. $Y$ represents \textit{prior} knowledge.
 
@@ -301,8 +301,14 @@
   A set of independence assertions, denoted $\mathcal{I}$, of the form $(\bm{X}\perp\bm{Y}\mid\bm{Z})$. $\mathcal{I}(P)$ denotes the set of independencies that hold in a \gls{probability distribution} $P$ over a \gls{set of random variables} $\mathcal{X}$.
 }
 
+\longnewglossaryentry{indicator function}{name=indicator function, symbol=\ensuremath{\mathbbm{1}}}
+{%
+  A \gls{function} that takes value $1$ when $\bm{X}=\bm{x}$ and $0$ otherwise. It is denoted with $\mathbbm{1}\{\bm{X}=\bm{x}\}$.
+}
+
 
 
 % ---- Acronyms
 
+\newacronym{cpd}{CPD}{conditional probability distribution}
 \newacronym{mpe}{MPE}{most probable explanation}

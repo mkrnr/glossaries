@@ -1,8 +1,10 @@
+\DeclareMathOperator*{\realnumbers}{{\rm I\!R}}
+
 % ---- Glossary Entries ----
 
 \longnewglossaryentry{factor}{name=factor, symbol=\ensuremath{\phi}}
 {%
-  Given a \gls{set of random variables} $\bm{D}$, a factor $\phi$ is a function from $\gls{val}(\bm{D})$ to ${\rm I\!R}$ (not normalized). A factor is called nonnegative if all its entries are nonnegative. $\bm{D}$ is called the \glslink{factor scope}{scope of the factor} and denoted \glssymbol{factor scope}.
+  Given a \gls{set of random variables} $\bm{D}$, a factor $\phi$ is a function from $\gls{val}(\bm{D})$ to $\realnumbers$ (not normalized). A factor is called nonnegative if all its entries are nonnegative. $\bm{D}$ is called the \glslink{factor scope}{scope of the factor} and denoted \glssymbol{factor scope}.
 }
 
 \longnewglossaryentry{factor scope}{name=factor scope, symbol=\ensuremath{Scope[\phi]}}
@@ -23,6 +25,8 @@
   An undirected graph where the the vertices represent the \glspl{random variable} and the edges correspond to a notion of direct probabilistic interaction between the neighboring variables.\\
 
   For each edge we create a \gls{factor} containing the two adjacent vertices, and assign values to each of the possible assignment pairs. A global model (probability distribution) is defined by multiplying all factors, normalized by a \gls{partitioning function} as a normailizing constant.
+
+  Also called Markov random field.
 
 }
 
@@ -65,7 +69,7 @@ network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subg
 
 \longnewglossaryentry{conditional random field}{name=conditional random field}
 {%
-  Given a set of \glspl{target variable} $\bm{Y}$ and $\bm{X}$ is a (disjoint) set of \glspl{observed variable}An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ where . The network is annotated with a set of \glspl{factor} $\phi_1(\bm{D}_1),\dots,\phi_m(\bm{D}_m)$ such that each $\bm{D}_i\nsubseteq\bm{X}$. The network encodes a \gls{conditional distribution} with
+  Given a set of \glspl{target variable} $\bm{Y}$ and $\bm{X}$ is a (disjoint) set of \glspl{observed variable}An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ where . The network is annotated with a set of \glspl{factor} $\phi_1(\bm{D}_1),\dots,\phi_m(\bm{D}_m)$ such that each $\bm{D}_i\nsubseteq\bm{X}$. The network encodes a \gls{conditional probability distribution} with
   \begin{equation*}
     P(\bm{Y}\mid\bm{X})=\frac{1}{Z(\bm{X})}\tilde{P}(\bm{Y},\bm{X})
   \end{equation*}
@@ -82,7 +86,108 @@ network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subg
   Two variables in $\mathcal{H}$ are connected by an (undirected) \gls{edge} whenever they appear together in the \glslink{factor scope}{scope} of some \gls{factor}.
 }
 
+\longnewglossaryentry{naive markov model}{name=naive Markov model}
+{%
+  A \gls{conditional random field} over the binary-valued variables $\bm{X}=\{X_1,\dots,X_k\}$ and $\bm{Y}=\{Y\}$ with a \glspl{edge potential} between $Y$ and each $X_i$ which are defined via the following \gls{log-linear model}:
+  \begin{equation*}
+    \phi_i(X_i,Y)=\exp\{ w_i \glssymbol{indicator function} \{ X_i=1,Y=1\}\}
+  \end{equation*}
+}
+
+\longnewglossaryentry{edge potential}{name=edge potential}
+{%
+  Given a \gls{graph} $\mathcal{H}$, a set of \glspl{factor} defined as:
+  \begin{equation*}
+    \{\phi(X_i,X_j):(X_i,X_j)\in\mathcal{H}\}
+  \end{equation*}
+  Edge potentials are used to define \glspl{pairwise markov network}.
+
+}
+
+\longnewglossaryentry{node potential}{name=node potential}
+{%
+  Given a \gls{graph} $\mathcal{H}$, a set of \glspl{factor} defined as:
+  \begin{equation*}
+    \{\phi(X_i):i=1,\dots,n\}
+  \end{equation*}
+  Node potentials are used to define \glspl{pairwise markov network}.
+}
+
+\longnewglossaryentry{pairwise markov network}{name=pairwise Markov network}
+{%
+  A subclass of \glspl{markov network}. Represents \glspl{probability distribution} where all of the \glspl{factor} are over single variables or pairs of variables. A pairwise Markov network over a graph $\mathcal{H}$ with a set of \glspl{node potential} and \glspl{edge potential}.
+}
+
+\longnewglossaryentry{log-linear model}{name=log-linear model}
+{%
+  A \gls{probability distribution} $P$ is a log-linear model over a \gls{markov network} $\mathcal{H}$ id it is associated with:
+  \begin{itemize}
+    \item a set of \glspl{feature} $\mathcal{F}=\{f_1(\bm{D}_1),\dots,f_k(\bm{D}_1)\}$, where each $\bm{D}_i$ is a \gls{complete subgraph} in $\mathcal{H}$,
+    \item a set od weights $w_1,\dots,w_k$,
+  \end{itemize}
+  such that $P$ has the \gls{logarithmic representation}:
+  \begin{equation*}
+    P(X_1,\dots,X_n)=\frac{1}{Z}\exp \Bigg[ -\sum_{i=1}^k w_i f_i(\bm{D}_i) \Bigg] .
+  \end{equation*}
+}
+
+\longnewglossaryentry{factor graph}{name=factor graph}
+{%
+  A factor graph $\mathcal{F}$ is an undirected \gls{graph} containing two types of \glspl{node}: Variable nodes and factor nodes. The graph only contains \glspl{edge} between variable nodes and factor nodes. It is parameterized by a set of \glspl{factor}, where each factor node $V_\phi$ is accociated with precisely one factor $\phi$, whose \glslink{factor scope}{scope} is the set of variables that are neghbors of $V_\phi$ in the graph.
+}
+
+\longnewglossaryentry{factorization}{name=factorization}
+{%
+  A \gls{probability distribution} $P$ factorizes over a \gls{factor graph} $\mathcal{F}$ if it can be represented as a set of \glspl{factor} according to the structure of $\mathcal{F}$.
+}
+
+\longnewglossaryentry{energy function}{name=energy function,symbol=\ensuremath{\epsilon}}
+{%
+  A \gls{function} $\epsilon(\bm{D})$ where $\bm{D}$ is a \gls{set of random variables}:
+  \begin{equation*}
+    \epsilon(\bm{D})=-\ln\phi(\bm{D})
+  \end{equation*}
+  It is used to rewrite a \gls{factor} $\phi(\bm{D})$:
+  \begin{equation*}
+    \phi(\bm{D})=\exp(-\epsilon(\bm{D})
+  \end{equation*}
+  This allows a \gls{logarithmic representation} of a \gls{markov network} that is parameterized using positive \glspl{factor}.
+}
+
+\longnewglossaryentry{logarithmic representation}{name=logarithmic representation}
+{%
+  Using the \gls{energy function} of a set of positive \glspl{factor} of a \gls{markov network} we can represent the \gls{probability distribution} with:
+  \begin{equation*}
+    P(X_1,\dots,X_n)\propto\exp \Bigg[ -\sum_{i=1}^m \epsilon_i(\bm{D}_i) \Bigg] .
+  \end{equation*}
+  This ensures that the probability distribution is positive. The logarithmic parameters can take any value along the real line.
+
+}
+
+\longnewglossaryentry{feature}{name=feature}
+{%
+  Given a subset of \glspl{random variable} $\bm{D}$, a feature $f(\bm{D})$ is a \gls{function} from $\gls{val}(\bm{D})$ to $\realnumbers$. The difference to a \gls{factor} is the missing nonnegativity requirement.
+}
+
+\longnewglossaryentry{logistic conditional probability distribution}{name=logistic conditional probability distribution}
+{%
+  A \gls{naive markov model} with its \glspl{edge potential} defined via the the following \gls{log-linear model}:
+  \begin{equation*}
+  \phi_i(X_i,Y)=\exp\{w_i\glssymbol{indicator function}\{W_i=1,Y=1\}\}
+  \end{equation*}
+  and a \gls{node potential} defined as:
+  \begin{equation*}
+    \phi_0(Y)=\exp\{w_0\glssymbol{indicator function}\{Y=1\}\}.
+  \end{equation*}
+  Following the equations that define \glspl{conditional random field} we can show that:
+  \begin{equation*}
+    P(Y=1\mid x_1,\dots,x_k)=\glssymbol{sigmoid function}\Bigg( w_0+\sum_{i=1}^k w_i x_i \Bigg) .
+  \end{equation*}
+}
+
+
 
 % ---- Acronyms ----
 
 \newacronym{crf}{CRF}{\gls{conditional random field}}
+\newacronym{mrf}{MRF}{\glslink{markov network}{Markov random field}}
