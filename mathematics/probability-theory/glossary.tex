@@ -2,10 +2,10 @@
 
 \longnewglossaryentry{event}{name=event}
 {%
-  Based on a \gls{event space} of possible outcomes \glssymbol{event space} and a set of measurable events \glssymbol{measurable set} to which we want to assign probabilities, an event $a \in \glssymbol{measurable set}$ is a subset of \glssymbol{event space}.\\
+  Based on a \gls{outcome space} of possible outcomes \glssymbol{outcome space} and a set of measurable events \glssymbol{measurable set} to which we want to assign probabilities, an event $a \in \glssymbol{measurable set}$ is a subset of \glssymbol{outcome space}.\\
 }
 
-\longnewglossaryentry{event space}{name=event space,symbol={\ensuremath{\Omega}}}
+\longnewglossaryentry{outcome space}{name=outcome space,symbol={\ensuremath{\Omega}}}
 {%
   A set of possible outcomes $\Omega$ with the following properties:
   \begin{itemize}
@@ -22,11 +22,11 @@
 
 \longnewglossaryentry{probability distribution}{name=probability distribution}
 {%
-  A probability distribution $P$ over $(\glssymbol{event space},\glssymbol{measurable set})$ is a mapping from events in \glssymbol{measurable set} to real values that satisfies the following conditions:
+  A probability distribution $P$ over $(\glssymbol{outcome space},\glssymbol{measurable set})$ is a mapping from events in \glssymbol{measurable set} to real values that satisfies the following conditions:
   \begin{itemize}
     \item $P(\alpha)\geq 0 $ for all $ \alpha \in S$.
-    \item $P(\glssymbol{event space})=1$.
-    \item If $\alpha,\beta\in \glssymbol{event space}$ and $\alpha\cap\beta = \emptyset$, then $P(\alpha\cup\beta)=P(\alpha)+P(\beta)$.
+    \item $P(\glssymbol{outcome space})=1$.
+    \item If $\alpha,\beta\in \glssymbol{outcome space}$ and $\alpha\cap\beta = \emptyset$, then $P(\alpha\cup\beta)=P(\alpha)+P(\beta)$.
   \end{itemize}
   Interesting conditions that are implied from these:
   \begin{itemize}
@@ -50,7 +50,6 @@
 
   Having \glspl{set of random variables} $\bm{X}$ and $\bm{Y}$ with $P(\bm{Y}|\bm{X})$, $\bm{Y}$ is called a set of \glspl{target variable} and $\bm{X}$ a set of \glspl{observed variable}.
 }
-
 
 \longnewglossaryentry{chain rule}{name=chain rule}
 {%
@@ -88,9 +87,9 @@
 
 \longnewglossaryentry{random variable}{name=random variable}
 {%
-  A function that associates with each outcome in \glssymbol{event space} a value.
+  A function that associates with each outcome in \glssymbol{outcome space} a value.
 
-  Example: $f_{Grade}$ associates with every person in \glssymbol{event space} a grade (A,B,C). The event $Grade=A$ is short for the event $\{w\in\Omega:f_{Grade}(w)=A\}$. We can then use expressions like $P(Grade=A)$.\\
+  Example: $f_{Grade}$ associates with every person in \glssymbol{outcome space} a grade (A,B,C). The event $Grade=A$ is short for the event $\{w\in\Omega:f_{Grade}(w)=A\}$. We can then use expressions like $P(Grade=A)$.\\
 
   Notation:
   \begin{itemize}
@@ -148,22 +147,22 @@
 {%
   A \gls{probability distribution} over a set $\mathcal{X}=\{X_1,\cdots,X_n\}$, denoted with $P(X_1,\cdots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\mathcal{X}$: $\xi\in\gls{val}(\mathcal{X})$
 
-  Properties:
-  \begin{itemize}
-    \item The joint distribution of 2 variables has to be consistent with the \gls{marginal distribution}: $P(x)=\sum_{y}P(x,y)$
-    \item The most fine-grained event possible is $X_1=x_1$ and $X_1=x_1$,$\cdots$, and $X_n=x_n$ for a choice of values $x_1,\cdots,x_n$.
-    \begin{itemize}
-      \item Two of this events are either identical or disjoint.
-      \item Any event defined using variables in $\bm{X}$ must be a union of a set of such events.
-    \end{itemize}
-    \item The probability computations remain the same whether we consider the original outcome space or the \gls{canonical outcome space}.
-  \end{itemize}
+  %Properties:
+  %\begin{itemize}
+  %  \item The joint distribution of 2 variables has to be consistent with the \gls{marginal distribution}: $P(x)=\sum_{y}P(x,y)$
+  %  \item The most fine-grained event possible is $X_1=x_1$ and $X_1=x_1$,$\cdots$, and $X_n=x_n$ for a choice of values $x_1,\cdots,x_n$.
+  %  \begin{itemize}
+  %    \item Two of this events are either identical or disjoint.
+  %    \item Any event defined using variables in $\bm{X}$ must be a union of a set of such events.
+  %  \end{itemize}
+  %  \item The probability computations remain the same whether we consider the original outcome space or the \gls{canonical outcome space}.
+  %\end{itemize}
 
 }
 
 \longnewglossaryentry{canonical outcome space}{name=canonical outcome space}
 {%
-  An \gls{event space} where each outcome corresponds to a \glslink{joint distribution}{joint assignment} to $X_1,\dots, X_n$.
+  An \gls{outcome space} where each outcome corresponds to a \glslink{joint distribution}{joint assignment} to $X_1,\dots, X_n$.
 }
 
 \longnewglossaryentry{atomic outcome}{name=atomic outcome, symbol=\ensuremath{\xi}}
@@ -306,6 +305,10 @@
   A \gls{function} that takes value $1$ when $\bm{X}=\bm{x}$ and $0$ otherwise. It is denoted with $\mathbbm{1}\{\bm{X}=\bm{x}\}$.
 }
 
+\longnewglossaryentry{full assignment}{name=full assignment, symbol=\ensuremath{\xi}}
+{%
+  Assigns to each \gls{random variable} $X\in\bm{X}$ a value. $\xi\in \glssymbol{val}$.
+}
 
 
 % ---- Acronyms

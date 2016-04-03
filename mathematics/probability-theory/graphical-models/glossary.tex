@@ -1,4 +1,4 @@
-\DeclareMathOperator*{\realnumbers}{{\rm I\!R}}
+\DeclareMathOperator*{\realnumbers}{\mathrm{I\!R}}
 
 % ---- Glossary Entries ----
 
@@ -69,7 +69,7 @@ network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subg
 
 \longnewglossaryentry{conditional random field}{name=conditional random field}
 {%
-  Given a set of \glspl{target variable} $\bm{Y}$ and $\bm{X}$ is a (disjoint) set of \glspl{observed variable}An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ where . The network is annotated with a set of \glspl{factor} $\phi_1(\bm{D}_1),\dots,\phi_m(\bm{D}_m)$ such that each $\bm{D}_i\nsubseteq\bm{X}$. The network encodes a \gls{conditional probability distribution} with
+An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ where $\bm{Y}$ is a set of \glspl{target variable} and $\bm{X}$ is a set of \glspl{observed variable}. The network is annotated with a set of \glspl{factor} $\phi_1(\bm{D}_1),\dots,\phi_m(\bm{D}_m)$ such that each $\bm{D}_i\nsubseteq\bm{X}$. The network encodes a \gls{conditional probability distribution} with
   \begin{equation*}
     P(\bm{Y}\mid\bm{X})=\frac{1}{Z(\bm{X})}\tilde{P}(\bm{Y},\bm{X})
   \end{equation*}
@@ -88,7 +88,7 @@ network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subg
 
 \longnewglossaryentry{naive markov model}{name=naive Markov model}
 {%
-  A \gls{conditional random field} over the binary-valued variables $\bm{X}=\{X_1,\dots,X_k\}$ and $\bm{Y}=\{Y\}$ with a \glspl{edge potential} between $Y$ and each $X_i$ which are defined via the following \gls{log-linear model}:
+  A \gls{conditional random field} over the binary-valued \glspl{observed variable} $\bm{X}=\{X_1,\dots,X_k\}$ and binary-valued \glspl{target variable} $\bm{Y}=\{Y\}$ with a \glspl{edge potential} between $Y$ and each $X_i$ which are defined via the following \gls{log-linear model}:
   \begin{equation*}
     \phi_i(X_i,Y)=\exp\{ w_i \glssymbol{indicator function} \{ X_i=1,Y=1\}\}
   \end{equation*}
@@ -122,7 +122,7 @@ network} $\mathcal{H}$ id each $\bm{D}_{k}(k=1,\dots,K)$ is a \gls{complete subg
 {%
   A \gls{probability distribution} $P$ is a log-linear model over a \gls{markov network} $\mathcal{H}$ id it is associated with:
   \begin{itemize}
-    \item a set of \glspl{feature} $\mathcal{F}=\{f_1(\bm{D}_1),\dots,f_k(\bm{D}_1)\}$, where each $\bm{D}_i$ is a \gls{complete subgraph} in $\mathcal{H}$,
+    \item a set of \glspl{feature} $\mathcal{F}=\{f_1(\bm{D}_1),\dots,f_k(\bm{D}_k)\}$, where each $\bm{D}_i$ is a \gls{complete subgraph} in $\mathcal{H}$,
     \item a set od weights $w_1,\dots,w_k$,
   \end{itemize}
   such that $P$ has the \gls{logarithmic representation}:
