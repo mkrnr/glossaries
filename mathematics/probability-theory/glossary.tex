@@ -35,13 +35,18 @@
   \end{itemize}
 }
 
-\longnewglossaryentry{conditional probability}{name=conditional probability}
+\longnewglossaryentry{conditional probability}{name=conditional probability, plural=conditional probabilities}
 {%
   The conditional probability of $\beta$ given $\alpha$ with $P(\alpha)>0$ is defined as:
   \begin{equation*}
     P(\beta\mid\alpha)=\frac{P(\alpha\cap\beta)}{P(\alpha)}
   \end{equation*}
   $P(\beta\mid\alpha)$ is a \gls{probability distribution} since it satisfies its properties.
+}
+
+\longnewglossaryentry{prior distribution}{name=prior distribution}
+{%
+  %TODO
 }
 
 \longnewglossaryentry{conditional probability distribution}{name=conditional probability distribution}
@@ -67,7 +72,7 @@
   \end{equation*}
   In general:
   \begin{equation*}
-    P(X_1,\dots X_k)=P(X_1)P(X_2\mid X_1)\cdots P(X_k\mid X_1,\cdots,X_{k-1})
+    P(X_1,\ldots X_k)=P(X_1)P(X_2\mid X_1)\ldots P(X_k\mid X_1,\ldots,X_{k-1})
   \end{equation*}
 
 }
@@ -93,10 +98,10 @@
 
   Notation:
   \begin{itemize}
-    \item $X$,$Y$,$Z$... for random variables
-    \item $x$,$y$,$z$... for assigments of values to  $X$,$Y$,$Z$: $P(X=x)\geq0 $ for all $x\in \gls{val}(X)$
+    \item $X$,$Y$,$Z$\dots for random variables
+    \item $x$,$y$,$z$\dots for assigments of values to  $X$,$Y$,$Z$: $P(X=x)\geq0 $ for all $x\in \gls{val}(X)$
     \item $P(x)$ is short for $P(X=x)$
-    \item $\sum_x$ is a sum over all possble values that $X$ can take: $\sum_xP(x)=1$
+    \item $\sum_x$ is a sum over all possble values that $X$ can take: $\sum_{x}P(x)=1$
   \end{itemize}
 }
 
@@ -104,8 +109,8 @@
 {%
   Notation:
   \begin{itemize}
-    \item $\bm{X}$,$\bm{Y}$,$\bm{Z}$... for sets of \glspl{random variable}
-    \item $\bm{x}$,$\bm{y}$,$\bm{z}$... for assigments of values to the random varibales in the sets $X$,$Y$,$Z$
+    \item $\bm{X}$,$\bm{Y}$,$\bm{Z}$\dots for sets of \glspl{random variable}
+    \item $\bm{x}$,$\bm{y}$,$\bm{z}$\dots for assigments of values to the random varibales in the sets $X$,$Y$,$Z$
     \item For $\bm{Y}\subseteq \bm{X}$, $\bm{x}\langle \bm{Y}\rangle$ is the assignment within $\bm{x}$ to the variables in $\bm{Y}$.
     \item For two assignments $\bm{x}$ and $\bm{y}$, $\bm{x}\sim \bm{y}$ if they agree on the variables in their intersection: $\bm{x}\langle\bm{X}\cap\bm{Y}\rangle=\bm{y}\langle\bm{X}\cap\bm{Y}\rangle$
   \end{itemize}
@@ -117,7 +122,7 @@
 
   Notation:
   \begin{itemize}
-    \item $x^1$,$x^2$,...$x^k$ for $k=\lvert\gls{val}(X)\rvert$ to enumerate the specific values of $X$.
+    \item $x^1$,$x^2$,\ldots, $x^k$ for $k=\lvert\gls{val}(X)\rvert$ to enumerate the specific values of $X$.
   \end{itemize}
 }
 
@@ -130,7 +135,7 @@
 
 \longnewglossaryentry{multinomial distribution}{name=multinomial distribution}
 {%
-  A distribution over $x^1,\cdots,x^k$, for $\lvert\gls{val}(X)\rvert$ with $\sum_{i=1}^k P(x^i)=1$.
+  A distribution over $x^1,\ldots,x^k$, for $\lvert\gls{val}(X)\rvert$ with $\sum_{i=1}^k P(x^i)=1$.
 }
 
 \longnewglossaryentry{bernoulli distribution}{name=Bernoulli distribution}
@@ -145,7 +150,7 @@
 
 \longnewglossaryentry{joint distribution}{name=joint distribution}
 {%
-  A \gls{probability distribution} over a set $\mathcal{X}=\{X_1,\cdots,X_n\}$, denoted with $P(X_1,\cdots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\mathcal{X}$: $\xi\in\gls{val}(\mathcal{X})$
+  A \gls{probability distribution} over a set $\mathcal{X}=\{X_1,\ldots,X_n\}$, denoted with $P(X_1,\ldots,X_n)$. It assigns probabilities to events that are specified in terms of the \glspl{random variable}. $\xi$ refers to a full assignment to the variables in $\mathcal{X}$: $\xi\in\gls{val}(\mathcal{X})$
 
   %Properties:
   %\begin{itemize}
@@ -179,7 +184,7 @@
 
 \longnewglossaryentry{conditional independence}{name=conditional independence}
 {%
-  Givent events $\alpha$, $\beta$, and $\gamma$: $\alpha$ is conditionally independent of event $\beta$ given event $\gamma$ in $P$, denoted $P\models(\alpha\perp\beta\mid\gamma)$, if $P(\alpha\mid\beta\cap\gamma)=P(\alpha\mid\gamma)$ or if $P(\beta\cap\gamma)=0$.
+  Given events $\alpha$, $\beta$, and $\gamma$: $\alpha$ is conditionally independent of event $\beta$ given event $\gamma$ in $P$, denoted $P\models(\alpha\perp\beta\mid\gamma)$, if $P(\alpha\mid\beta\cap\gamma)=P(\alpha\mid\gamma)$ or if $P(\beta\cap\gamma)=0$.
 
   Alternatively: A \gls{probability distribution} $P$ satisfies $(\alpha\perp\beta)$ \acrshort{iff} $P(\alpha\cap\beta)=P(\alpha)P(\beta)$.\\[0.1cm]
 
@@ -245,9 +250,16 @@
   The task is to compute the \gls{posterior probability distribution} $P(\bm{Y}\mid\bm{E}=\bm{e})$.
 }
 
+\longnewglossaryentry{conditional probability query}{name=conditional probability query}
+{%
+  %TODO define
+  %TODO difference to ``probability query''?
+}
+
+
 \longnewglossaryentry{evidence}{name=evidence,symbol=\ensuremath{\bm{E}}}
 {%
-  A subset $\bm{E}$ of \glspl{random variable} , and an instantiation $\bm{e}$ to these variables. Part of a \gls{probability query}.
+  A subset $\bm{E}$ of \glspl{random variable}, and an instantiation $\bm{e}$ to these variables. Part of a \gls{probability query}.
 }
 
 \longnewglossaryentry{query variables}{name=query variables}
@@ -305,9 +317,31 @@
   A \gls{function} that takes value $1$ when $\bm{X}=\bm{x}$ and $0$ otherwise. It is denoted with $\mathbbm{1}\{\bm{X}=\bm{x}\}$.
 }
 
+\longnewglossaryentry{assignment}{name=assignment}
+{%
+  %TODO add
+}
+
 \longnewglossaryentry{full assignment}{name=full assignment, symbol=\ensuremath{\xi}}
 {%
   Assigns to each \gls{random variable} $X\in\bm{X}$ a value. $\xi\in \glssymbol{val}$.
+}
+
+
+
+\longnewglossaryentry{maximum likelihood}{name=maximum likelihood}
+{%
+  %TODO add
+}
+
+\longnewglossaryentry{expectation}{name=expectation}
+{%
+  %TODO add
+}
+
+\longnewglossaryentry{power set}{name=power set, symbol=\ensuremath{\mathbb{P}}}
+{%
+  %TODO add
 }
 
 

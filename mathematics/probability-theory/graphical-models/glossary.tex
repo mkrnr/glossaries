@@ -1,4 +1,3 @@
-\DeclareMathOperator*{\realnumbers}{\mathrm{I\!R}}
 
 % ---- Glossary Entries ----
 
@@ -46,6 +45,8 @@
 
 \longnewglossaryentry{gibbs distribution}{name=Gibbs distribution, symbol=\ensuremath{P_{\Phi}}}
 {%
+  An undirected parameterization of a \gls{probability distribution}.
+
   A \gls{probability distribution} $P_{\Phi}$ is a Gibbs distribution parameterized by a set of \glspl{factor} $\Phi=\{\phi_1(\bm{D}_1),\dots,\phi_K(\bm{D}_K)\}$ if it is defined as follows:
   \begin{equation*}
     P_{\Phi}(X_1,\dots,X_n)=\frac{1}{Z}\tilde{P}_{\Phi}(X_1,\dots,X_n),
@@ -58,7 +59,7 @@
   \begin{equation*}
     Z=\sum_{X_1,\ldots,X_n}\tilde{P}_{\Phi}(X_1,\dots,X_n)
   \end{equation*}
-  is the \gls{partitioning function}.
+  is a normalizing constant called the \gls{partitioning function}~\citep{koller2009probabilistic}.
 }
 
 \longnewglossaryentry{markov network factorization}{name=Markov network factorization}
@@ -90,7 +91,7 @@ An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ wh
 {%
   A \gls{conditional random field} over the binary-valued \glspl{observed variable} $\bm{X}=\{X_1,\dots,X_k\}$ and binary-valued \glspl{target variable} $\bm{Y}=\{Y\}$ with a \glspl{edge potential} between $Y$ and each $X_i$ which are defined via the following \gls{log-linear model}:
   \begin{equation*}
-    \phi_i(X_i,Y)=\exp\{ w_i \glssymbol{indicator function} \{ X_i=1,Y=1\}\}
+    \phi_i(X_i,Y)=\exp\{ \theta_i \glssymbol{indicator function} \{ X_i=1,Y=1\}\}
   \end{equation*}
 }
 
@@ -122,12 +123,12 @@ An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ wh
 {%
   A \gls{probability distribution} $P$ is a log-linear model over a \gls{markov network} $\mathcal{H}$ id it is associated with:
   \begin{itemize}
-    \item a set of \glspl{feature} $\mathcal{F}=\{f_1(\bm{D}_1),\dots,f_k(\bm{D}_k)\}$, where each $\bm{D}_i$ is a \gls{complete subgraph} in $\mathcal{H}$,
-    \item a set od weights $w_1,\dots,w_k$,
+    \item a set of \glspl{feature function} $\mathcal{F}=\{f_1(\bm{D}_1),\dots,f_k(\bm{D}_k)\}$, where each $\bm{D}_i$ is a \gls{complete subgraph} in $\mathcal{H}$,
+    \item a set od weights $\theta_1,\dots,\theta_k$,
   \end{itemize}
   such that $P$ has the \gls{logarithmic representation}:
   \begin{equation*}
-    P(X_1,\dots,X_n)=\frac{1}{Z}\exp \Bigg[ -\sum_{i=1}^k w_i f_i(\bm{D}_i) \Bigg] .
+    P(X_1,\dots,X_n)=\frac{1}{Z}\exp \Bigg[ -\sum_{i=1}^k \theta_i f_i(\bm{D}_i) \Bigg].
   \end{equation*}
 }
 
@@ -149,7 +150,7 @@ An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ wh
   \end{equation*}
   It is used to rewrite a \gls{factor} $\phi(\bm{D})$:
   \begin{equation*}
-    \phi(\bm{D})=\exp(-\epsilon(\bm{D})
+    \phi(\bm{D})=\exp(-\epsilon(\bm{D}))
   \end{equation*}
   This allows a \gls{logarithmic representation} of a \gls{markov network} that is parameterized using positive \glspl{factor}.
 }
@@ -158,33 +159,58 @@ An undirected \gls{graph} whose \glspl{node} correspond to $\bm{Y}\cup\bm{X}$ wh
 {%
   Using the \gls{energy function} of a set of positive \glspl{factor} of a \gls{markov network} we can represent the \gls{probability distribution} with:
   \begin{equation*}
-    P(X_1,\dots,X_n)\propto\exp \Bigg[ -\sum_{i=1}^m \epsilon_i(\bm{D}_i) \Bigg] .
+    P(X_1,\dots,X_n)\propto\exp \Bigg[ -\sum_{i=1}^m \epsilon_i(\bm{D}_i) \Bigg].
   \end{equation*}
   This ensures that the probability distribution is positive. The logarithmic parameters can take any value along the real line.
 
 }
 
-\longnewglossaryentry{feature}{name=feature}
+\longnewglossaryentry{feature function}{name=feature function}
 {%
-  Given a subset of \glspl{random variable} $\bm{D}$, a feature $f(\bm{D})$ is a \gls{function} from $\gls{val}(\bm{D})$ to $\realnumbers$. The difference to a \gls{factor} is the missing nonnegativity requirement.
+  Given a subset of \glspl{random variable} $\bm{D}$, a feature function $f(\bm{D})$ is a \gls{function} from $\gls{val}(\bm{D})$ to $\realnumbers$. The difference to a \gls{factor} is the missing nonnegativity requirement.
 }
 
 \longnewglossaryentry{logistic conditional probability distribution}{name=logistic conditional probability distribution}
 {%
   A \gls{naive markov model} with its \glspl{edge potential} defined via the the following \gls{log-linear model}:
   \begin{equation*}
-  \phi_i(X_i,Y)=\exp\{w_i\glssymbol{indicator function}\{W_i=1,Y=1\}\}
+  \phi_i(X_i,Y)=\exp\{\theta_i\glssymbol{indicator function}\{X_i=1,Y=1\}\}
   \end{equation*}
   and a \gls{node potential} defined as:
   \begin{equation*}
-    \phi_0(Y)=\exp\{w_0\glssymbol{indicator function}\{Y=1\}\}.
+    \phi_0(Y)=\exp\{\theta_0\glssymbol{indicator function}\{Y=1\}\}.
   \end{equation*}
   Following the equations that define \glspl{conditional random field} we can show that:
   \begin{equation*}
-    P(Y=1\mid x_1,\dots,x_k)=\glssymbol{sigmoid function}\Bigg( w_0+\sum_{i=1}^k w_i x_i \Bigg) .
+    P(Y=1\mid x_1,\dots,x_k)=\glssymbol{sigmoid function}\Bigg( \theta_0+\sum_{i=1}^k \theta_i x_i \Bigg).
   \end{equation*}
 }
 
+\longnewglossaryentry{probabilistic graphical model}{name=probabilistic graphical model}
+{%
+  %TODO
+}
+
+\longnewglossaryentry{bayesian network}{name=Bayesian network}
+{%
+  %TODO
+}
+
+\longnewglossaryentry{linear-chain crf}{name=linear-chain CRF}
+{%
+  A \acrfull{crf} \dots
+  %TODO
+}
+
+\longnewglossaryentry{generative model}{name=generative model}
+{%
+  %TODO
+}
+
+\longnewglossaryentry{discriminative model}{name=discriminative model}
+{%
+  %TODO
+}
 
 
 % ---- Acronyms ----
