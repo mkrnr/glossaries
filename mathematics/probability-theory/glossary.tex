@@ -2,7 +2,7 @@
 
 \longnewglossaryentry{event}{name=event}
 {%
-  Based on a \gls{outcome space} of possible outcomes \glssymbol{outcome space} and a set of measurable events \glssymbol{measurable set} to which we want to assign probabilities, an event $a \in \glssymbol{measurable set}$ is a subset of \glssymbol{outcome space}.\\
+  Based on a \gls{outcome space} of possible outcomes \glssymbol{outcome space} and a set of measurable events \glssymbol{event space} to which we want to assign probabilities, an event $a \in \glssymbol{event space}$ is a subset of \glssymbol{outcome space}.\\
 }
 
 \longnewglossaryentry{outcome space}{name=outcome space,symbol={\ensuremath{\Omega}}}
@@ -10,19 +10,19 @@
   A set of possible outcomes $\Omega$ with the following properties:
   \begin{itemize}
     \item It contains the empty event $\emptyset$, and the trivial event $\Omega$.
-    \item It is closed under union: If $\alpha, \beta \in \glssymbol{measurable set}$, then so is $\alpha \cup \beta$.
-    \item It is closed under complementation: If $\alpha \in \glssymbol{measurable set}$, then so is $\Omega - \alpha$.
+    \item It is closed under union: If $\alpha, \beta \in \glssymbol{event space}$, then so is $\alpha \cup \beta$.
+    \item It is closed under complementation: If $\alpha \in \glssymbol{event space}$, then so is $\Omega - \alpha$.
   \end{itemize}
 }
 
-\longnewglossaryentry{measurable set}{name=measurable set,symbol=\ensuremath{\mathcal{S}}}
+\longnewglossaryentry{event space}{name=event space,symbol=\ensuremath{\mathcal{S}}}
 {%
   A set $\mathcal{S}$ is measurable if it possible to assign a number to each suitable subset of $\mathcal{S}$.
 }
 
 \longnewglossaryentry{probability distribution}{name=probability distribution}
 {%
-  A probability distribution $P$ over $(\glssymbol{outcome space},\glssymbol{measurable set})$ is a mapping from events in \glssymbol{measurable set} to real values that satisfies the following conditions:
+  A probability distribution $P$ over $(\glssymbol{outcome space},\glssymbol{event space})$ is a mapping from events in \glssymbol{event space} to real values that satisfies the following conditions:
   \begin{itemize}
     \item $P(\alpha)\geq 0 $ for all $ \alpha \in S$.
     \item $P(\glssymbol{outcome space})=1$.
@@ -145,7 +145,7 @@
 
 \longnewglossaryentry{marginal distribution}{name=marginal distribution}
 {%
-  A \gls{probability distribution} over events that can be described using $X$, denoted by $P(X)$. The only difference to the definition of a \gls{probability distribution} is that here we are restricted to the subsets of \glssymbol{measurable set} that can be described with $X$.
+  A \gls{probability distribution} over events that can be described using $X$, denoted by $P(X)$. The only difference to the definition of a \gls{probability distribution} is that here we are restricted to the subsets of \glssymbol{event space} that can be described with $X$.
 }
 
 \longnewglossaryentry{joint distribution}{name=joint distribution}
@@ -229,7 +229,7 @@
 
 \longnewglossaryentry{positive distribution}{name=positive distribution}
 {%
-  A \gls{probability distribution} $P$ where for all events $\alpha\in\glssymbol{measurable set}$ such that $\alpha\neq\emptyset$, we have that $P(\alpha)>0$.
+  A \gls{probability distribution} $P$ where for all events $\alpha\in\glssymbol{event space}$ such that $\alpha\neq\emptyset$, we have that $P(\alpha)>0$.
 
   Positive distributions have the property of \gls{intersection}.
 }
@@ -347,5 +347,5 @@
 
 % ---- Acronyms
 
-\newacronym{cpd}{CPD}{conditional probability distribution}
+\newacronym{cpd}{CPD}{\glslink{conditional probability distribution}{conditional probability distribution}}
 \newacronym{mpe}{MPE}{most probable explanation}
